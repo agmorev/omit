@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load static %}
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>{% trans "Portfolio" %}</h2>
+            <p>{% trans "Some of my projects that have been developed using different technologies and frameworks" %}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                <ul id="portfolio-flters">
+                    <li data-filter="*" class="filter-active">{% trans "All" %}</li>
+                    <li data-filter=".filter-web">{% trans "Web" %}</li>
+                    <li data-filter=".filter-app">{% trans "App" %}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+            {% for item in portfolio_items %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{ item.get_category_display }}">
+                    <div class="portfolio-wrap">
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>{{ item.name|capfirst }}</h4>
+                            <p>{{ item.get_category_display|capfirst }}</p>
+                            <div class="portfolio-links">
+                                <a href="{{ item.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                <a href="{% url 'portfolio_details' pk=item.id %}" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+<!-- End Portfolio Section -->

@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load static %}
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>{% trans "Services" %}</h2>
+            <p>
+                {% trans "The quality of the work is guaranteed by the professional qualities, the use of the applied information technologies, the work organization process, and the regular feedback sessions with clients." %}
+            </p>
+        </div>
+
+        <div class="row">
+
+            {% for item in service_items %}
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ item.data_aos_delay }}">
+                    {% comment %} <a href="{% url 'service_details' pk=item.id %}" class="portfolio-details-lightbox" data-glightbox="type: external" title="Service Details"> {% endcomment %}
+                        <div class="icon-box iconbox-{{ item.color }}">
+                            <div class="icon">
+                                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke="none" stroke-width="0" fill="#f5f5f5" d="{{ item.svg_path }}"></path>
+                                </svg>
+                                <i class="{{ item.image }}"></i>
+                            </div>
+                            <h4><a href="">{{ item.name|upper }}</a></h4>
+                            <p>{{ item.description|safe }}</p>
+                        </div>
+                    {% comment %} </a> {% endcomment %}
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section><!-- End Services Section -->

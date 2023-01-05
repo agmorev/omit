@@ -1,0 +1,48 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+	<head>
+		<title>Oleksii Morev</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Oleksii Morev">
+		<meta name="keywords" content="it, development, python, django, freelance, design">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		{% include "styles.html" %}
+		{% block CSS %}
+		{% endblock CSS %}
+	</head>
+
+	<body>
+		{% for message in messages %}
+			<div class="alert {{ message.tags }} alert-dismissible m-1" role="alert" style="opacity: 0.8;">
+				{{ message }}
+				<a href="" type="button" class="close float-end" data-dismiss="modal" aria-label="Close">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" class="bi bi-x-lg" viewBox="0 0 16 16">
+						<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+					</svg>
+				</a>
+			</div>
+		{% endfor %}
+
+		{% block header %}
+			{% include "header.html" %}
+		{% endblock header %}
+
+		{% block content %}
+		{% endblock content %}
+
+		{% block footer %}
+			{% include "footer.html" %}
+		{% endblock footer %}
+
+		<div id="preloader"></div>
+  		<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+		
+		{% include "scripts.html" %}
+		{% block JS %}
+		{% endblock JS %}
+	</body>
+</html>

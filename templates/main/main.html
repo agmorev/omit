@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    
+    <main id="main">
+
+        {% include 'main/hero.html' %}
+        
+        {% include 'main/about.html' %}
+
+        {% include 'main/facts.html' %}
+
+        {% include 'main/skills.html' %}
+
+        {% include 'main/resume.html' %}
+
+        {% include 'main/portfolio.html' %}
+
+        {% include 'main/services.html' %}
+
+        {% comment %} {% include 'main/testimonials.html' %} {% endcomment %}
+
+        {% include 'main/contact.html' %}
+
+    </main><!-- End #main -->
+
+{% endblock content %}
