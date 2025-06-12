@@ -1,6 +1,28 @@
 from django.contrib import admin
-from .models import PortfolioItem, PortfolioItemGallery, ServiceItem, ServiceItemGallery, ServiceItemClients
+from .models import (
+    EducationItem,
+    PortfolioItem,
+    PortfolioItemGallery,
+    ServiceItem,
+    ServiceItemGallery,
+    ServiceItemClients
+)
 from django.utils.translation import gettext_lazy as _
+
+
+@admin.register(EducationItem)
+class EducationItemAdmin(admin.ModelAdmin):
+    list_display = ('name', 'end_date', 'organization')
+    list_display_links = ('name', 'end_date', 'organization')
+    list_filter = ('name', 'organization')
+    date_hierarchy = 'end_date'
+    fieldsets = (
+
+        (_('EDUCATION ITEM'), {
+            'classes': ('wide', 'extrapretty'),
+            'fields': ['name', 'start_date', 'end_date', 'organization', 'description', 'certificate']
+        }),
+    )
 
 
 class PortfolioItemGalleryInline(admin.TabularInline):

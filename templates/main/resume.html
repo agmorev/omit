@@ -24,41 +24,15 @@
                 </div>
 
                 <h3 class="resume-title">{% trans "Education" %}</h3>
-                <div class="resume-item">
-                    <h4>{% trans "PHP for Beginners" %}</h4>
-                    <h5>Mar 2023 - Jun 2023</h5>
-                    <p><em>Learn Programming Academy, Australia</em></p>
-                </div>
-                <div class="resume-item">
-                    <h4>{% trans "Specialization <Python 3 Programming>. Faculty: Computer Science" %}</h4>
-                    <h5>Oct 2021 - Mar 2022</h5>
-                    <p><em>University of Michigan, USA</em></p>
-                </div>
-                <div class="resume-item">
-                    <h4>{% trans "Developing Applications; SQL, Databases and Django" %}</h4>
-                    <h5>Apr 2021 - May 2021</h5>
-                    <p><em>IBM, USA</em></p>
-                </div>
-                <div class="resume-item">
-                    <h4>{% trans "Associate's degree, Python, Django, CSS; HTML, JS" %}</h4>
-                    <h5>Jun 2020 - Oct 2020</h5>
-                    <p><em>Main Academy, Kyiv</em></p>
-                </div>
-                <div class="resume-item">
-                    <h4>{% trans "Python and Django Full Stack Web; Developer Bootcamp" %}</h4>
-                    <h5>Aug 2019 - Dec 2019</h5>
-                    <p><em>UDEMY, instructor: Jose Portilla</em></p>
-                </div>
-                <div class="resume-item">
-                    <h4>{% trans "Masters Degree in International Law" %}</h4>
-                    <h5>Sep 2005 - Jan 2008</h5>
-                    <p><em>Ukrainian State University of Finance and International Trade, Kyiv</em></p>
-                </div>
-                <div class="resume-item">
-                    <h4>{% trans "Masters Degree in Economy" %}</h4>
-                    <h5>Sep 1997 - Jun 2002</h5>
-                    <p><em>Academy of Customs Service of Ukraine, Dnipro</em></p>
-                </div>
+
+                {% for item in education_items %}
+                    <div class="resume-item">
+                        <h4>{% trans item.name %}</h4>
+                        <h5>{{ item.start_date|date:"M Y" }}{% if item.start_date and item.end_date %} - {% endif %}{{ item.end_date|date:"M Y" }}</h5>
+                        <p><em>{{ item.organization|capfirst }}</em></p>
+                    </div>
+                {% endfor %}
+
             </div>
             <div class="col-lg-6">
                 <h3 class="resume-title">{% trans "Professional Experience" %}</h3>

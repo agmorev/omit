@@ -2,7 +2,14 @@ from email.message import EmailMessage
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView, DetailView
 from .forms import ContactForm
-from .models import PortfolioItem, PortfolioItemGallery, ServiceItem, ServiceItemGallery, ServiceItemClients
+from .models import (
+    EducationItem,
+    PortfolioItem,
+    PortfolioItemGallery,
+    ServiceItem,
+    ServiceItemGallery,
+    ServiceItemClients
+)
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 
@@ -15,6 +22,7 @@ class MainView(SuccessMessageMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
+        context['education_items'] = EducationItem.objects.all().order_by("-end_date")
         context['portfolio_items'] = PortfolioItem.objects.all()
         context['service_items'] = ServiceItem.objects.all().order_by("id")
         return context
