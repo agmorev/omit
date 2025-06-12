@@ -2,6 +2,23 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class EducationItem(models.Model):
+    name = models.CharField(max_length=255, null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    organization = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    certificate = models.ImageField(upload_to='certificates/', null=True, blank=True)
+    
+    class Meta:
+        verbose_name = _('Education item')
+        verbose_name_plural = _('Education items')
+        ordering = ('end_date',)
+    
+    def __str__(self):
+        return self.name
+
+
 class PortfolioItem(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
     category = models.CharField(max_length=10, choices=(('0', _("web")), ('1', _("app"))), null=True, blank=True)
